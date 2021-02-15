@@ -1,0 +1,58 @@
+<%= form_with(model: task) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><% pluralize(task.errors.count, "error") %> 以下のエラーがあります。。。</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+ <tbody>
+  <tr>
+    <div class="field">
+    <th><%= form.label :'タイトル' %></th>
+    <td><%= form.text_field :title %></td>
+    </div>
+  </tr>
+
+  <tr>
+    <div class="field">
+    <th><%= form.label :'開始日' %></th>
+    <td><%= form.date_field :startdate %></td>
+    </div>
+  </tr>
+
+  <tr>
+  <div class="field">
+    <th><%= form.label :'終了日' %></th>
+    <td><%= form.date_field :finishdate %></td>
+   </div>
+  </tr>
+
+  <tr>
+  <div class="field">
+    <th><%= form.label :'終日' %></th>
+    <td><%= form.check_box :allday %><br>
+    <%= '終日の場合はチェックを入れます' %></td>
+   </div>
+  </tr>
+
+  <tr>
+   <div class="field">
+       <th><%= form.label :'スケジュールメモ' %></th>
+       <td><%= form.text_area :memo %></td>
+   </div>
+  </tr> 
+
+ </tbody>
+ </table>
+
+  <div class="actions">
+    <%= form.submit('スケジュールの編集を完了する', :class=>'fbtn') %>
+  </div>
+<% end %>

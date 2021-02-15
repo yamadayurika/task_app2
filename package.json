@@ -1,5 +1,5 @@
 {
-  "name": "task-app2",
+  "name": "railsapp",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

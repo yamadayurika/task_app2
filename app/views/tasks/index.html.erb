@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<body>
+ <header>
+  <h1>Ruby on Rails スケジュール管理アプリ</h1>
+ </header>
+
+ <div class="main_container">
+  <div clas="information">
+ <h2>スケジュール一覧</h2>
+  </div>
+
+ <table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>スケジュール更新日時</th>
+      <th>確認</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.id %></td>
+        <td><%= task.title %></td>
+        <td><%= task.startdate %></td>
+        <td><%= task.finishdate %></td>
+        　　<% if task.allday == true %>
+        <td> ○  </td>
+          　<% else task.allday == false %>
+        <td>　</td>
+            <% end %>
+        <td><%= task.updated_at %></td>
+        <td><%= link_to '確認', task %></td>
+        <td><%= link_to '編集', edit_task_path(task) %></td>
+        <td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+ </table>
+
+ <br>
+
+ <%= link_to 'スケジュール新規登録', new_task_path %>
+
+</div>
+ <footer>
+  <h1>現在の日時：<%= @today %> スケジュール合計：<%= @counts %></h1>
+ </footer>
+
+</body>

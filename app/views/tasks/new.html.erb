@@ -1,0 +1,19 @@
+
+<body>
+ <header>
+  <h1>Ruby on Rails スケジュール管理アプリ</h1>
+ </header>
+ <div class="main_container">
+  <div class="information">
+   <h2>スケジュール新規作成</h2>
+  </div>
+
+  <%= render 'form', task: @task %>
+
+  <%= link_to 'スケジュール一覧に戻る', tasks_path %>
+
+ </div>
+ <footer>
+  <h1>現在の日時：<%= @today %></h1>
+ </footer>
+</body>

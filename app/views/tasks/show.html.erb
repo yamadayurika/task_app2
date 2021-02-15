@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<body>
+ <header>
+  <h1>Ruby on Rails スケジュール管理アプリ</h1>
+ </header>
+
+ <div class = "main_container">
+    <div class = "information">
+     <h2>スケジュール詳細</h2>
+    </div>
+
+   <table>
+   <tbody>
+    <tr>
+     <th>タイトル</th>
+     <td><%= @task.title %></td>
+    </tr>
+
+    <tr>
+     <th>開始日</th>
+     <td><%= @task.startdate %></td>
+    </tr>
+
+    <tr>
+     <th>終了日</th>
+     <td><%= @task.finishdate %></td>
+    </tr>
+
+ 
+    <tr>
+      <th>終日</th>  
+      <% if @task.allday == true%>
+          <td>○</td>
+        　<%else @task.allday == false%>
+          <td> </td>
+          <% end %>
+    </tr>
+
+
+    <tr>
+      <th>メモ</th>
+      <td><%= @task.memo %></td>
+    </tr>
+    </tbody>
+   </table>
+
+   <%= link_to 'スケジュールを編集する', edit_task_path(@task) %> |
+   <%= link_to 'スケジュール一覧に戻る', tasks_path %>
+
+  </div>
+
+ <footer>
+  <h1>現在の日時：<%= @today %></h1>
+ </footer>
+
+ </body>
